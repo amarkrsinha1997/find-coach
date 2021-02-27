@@ -41,14 +41,13 @@ export default {
         this.formIsValid = false;
         return;
       }
-
+      console.log(this.$route)
       this.$store.dispatch('requests/contactCoach', {
         email: this.email,
         message: this.message,
-        coacId: this.$route.param.id
+        coachId: this.$route.params.id
       })
       this.$router.replace('/coaches');
-
     },
   },
 };
