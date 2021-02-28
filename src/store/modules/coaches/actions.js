@@ -13,7 +13,7 @@ export default {
 
     await httpService.put({
       payload: data,
-      path: `/coaches/${userId}.json`
+      path: `/coaches/${userId}.json?auth=${context.rootGetters.token}`
     });
     context.commit("registerCoach", { ...data, id: userId });
   },

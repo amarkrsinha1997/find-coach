@@ -18,7 +18,7 @@ export default {
   async fetchRequests(context) {
     const coachId = context.rootGetters.userId;
     const response = await httpService.get({
-      path: `/requests/${coachId}.json`,
+      path: `/requests/${coachId}.json?auth=${context.rootGetters.token}`,
       errorMessage: "Failed to fetch requests"
     })
     const requests = Object.keys(response).map((requestId) => ({

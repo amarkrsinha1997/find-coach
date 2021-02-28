@@ -1,9 +1,10 @@
 const apiCall = async ({
   method = "GET",
   payload = {},
-  path,
+  path = '',
   readBody = resp => resp.json(),
-  errorMessage,
+  errorMessage = '',
+  baseUrl = process.env.VUE_APP_FIREBASE_URL,
   ...others
 }) => {
   const options = {
@@ -15,8 +16,8 @@ const apiCall = async ({
   } else {
     options.body = JSON.stringify(payload);
   }
-  const response = await fetch(process.env.VUE_APP_FIREBASE_URL + path, options)
-  const responseBody = readBody(response);
+  const response = await fetch(baseUrl + path, options)
+  const responseBody = await readBody(response) || {};
   if (!response.ok) {
     throw new Error(response.message || errorMessage)
   }

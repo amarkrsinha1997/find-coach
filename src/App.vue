@@ -10,6 +10,14 @@
 import TheHeader from "./components/layout/TheHeader";
 export default {
   components: { TheHeader },
+  created() {
+    this.$store.dispatch('tryLogin');
+  },
+  computed: {
+    isAuth() {
+      return this.$store.getters.isAuthenticated;
+    }
+  },
 };
 </script>
 <style>

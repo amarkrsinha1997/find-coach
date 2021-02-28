@@ -9,10 +9,11 @@
     <section>
       <base-card>
         <div class="controls">
-          <base-button @click="fetchCoaches(true)" mode="outline"
-            >Refresh</base-button
-          >
-          <base-button v-if="!isCoach && !isLoading" link to="/register">
+          <base-button @click="fetchCoaches(true)" mode="outline">
+            Refresh
+          </base-button>
+          <base-button link to="/auth?redirect=register" v-if="!isAuth">Login to Register as Coach</base-button>
+          <base-button v-else-if="!isCoach && !isLoading" link to="/register">
             Register as Coach
           </base-button>
         </div>
@@ -85,6 +86,9 @@ export default {
     isCoach() {
       return this.$store.getters["coaches/isCoach"];
     },
+    isAuth() {
+      return this.$store.getters.isAuthenticated;
+    }
   },
   methods: {
     setFilter(updatedFilters) {
