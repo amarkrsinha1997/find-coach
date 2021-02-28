@@ -1,5 +1,6 @@
 # find-coach-assignment
-
+A vue application that uses Firebase, Vuex & Vue-Router.
+[Demo](https://find-coach-vue.netlify.app/)
 ## Project setup
 ```
 npm install
@@ -19,6 +20,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
