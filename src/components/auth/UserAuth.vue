@@ -64,6 +64,7 @@ export default {
         this.password.length < 6
       ) {
         this.formIsValid = false;
+        return;
       }
       try {
         const payload = {
