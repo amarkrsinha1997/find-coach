@@ -12,7 +12,8 @@
       <base-card>
         <header>
           <h2>Interested? React out now!</h2>
-          <base-button link :to="contactLink">Contact</base-button>
+          <base-button v-if="!isContactPage" link :to="contactLink">Contact</base-button>
+          <base-button v-else>Contact</base-button>
         </header>
         <router-view></router-view>
       </base-card>
@@ -56,6 +57,9 @@ export default {
     description() {
       return this.selectedCoach.description;
     },
+    isContactPage() {
+      return this.$route.path.includes("/contact")
+    }
   },
   created() {
     this.selectedCoach = this.$store.getters["coaches/coaches"].find(
